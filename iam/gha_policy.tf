@@ -50,7 +50,9 @@ resource "aws_iam_policy" "gha_policy" {
                 "logs:PutLogEvents",
                 "logs:DescribeLogStreams"
             ],
-            "Resource": "*"
+            "Resource": [
+                "arn:aws:logs:ap-northeast-1:575357958164:log-group:/ecs/digital-ichiba*:log-stream:*"
+            ]
         }
     ]
 })
