@@ -17,3 +17,7 @@ module "alb" {
   alb_security_group_id = module.network.alb_security_group_id
   certificate_arn       = data.aws_acm_certificate.main.arn
 }
+
+module "iam" {
+  source = "./iam"
+}
