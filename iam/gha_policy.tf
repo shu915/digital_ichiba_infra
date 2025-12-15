@@ -14,7 +14,9 @@ resource "aws_iam_policy" "gha_policy" {
                 "ecr:CompleteLayerUpload",
                 "ecr:PutImage"
             ],
-            "Resource": "*"
+            "Resource": [
+                "arn:aws:ecr:ap-northeast-1:575357958164:repository/digital-ichiba-ecr"
+            ]
         },
         {
             "Sid": "EcsDeploy",
@@ -25,7 +27,10 @@ resource "aws_iam_policy" "gha_policy" {
                 "ecs:DescribeTaskDefinition",
                 "ecs:UpdateService"
             ],
-            "Resource": "*"
+            "Resource": [
+                "arn:aws:ecs:ap-northeast-1:575357958164:service/digital-ichiba-cluster/*",
+                "arn:aws:ecs:ap-northeast-1:575357958164:task-definition/digital-ichiba-*:*"
+            ]
         },
         {
             "Sid": "PassTaskRolesToEcs",

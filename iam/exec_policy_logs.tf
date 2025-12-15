@@ -12,7 +12,7 @@ resource "aws_iam_policy" "exec_policy_logs" {
                 "logs:PutLogEvents",
                 "logs:DescribeLogStreams"
             ],
-            "Resource": "*"
+            "Resource": "arn:aws:logs:*:*:log-group:/ecs/digital-ichiba*"
         }
     ]
 })
