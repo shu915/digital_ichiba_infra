@@ -33,4 +33,5 @@ module "rds" {
   source               = "./rds"
   private_subnet_1a_id = module.network.private_subnet_1a_id
   private_subnet_1c_id = module.network.private_subnet_1c_id
+  db_security_group_id = module.network.db_security_group_id
 }
