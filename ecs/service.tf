@@ -29,7 +29,6 @@ resource "aws_ecs_service" "digital_ichiba_service" {
   }
 
   lifecycle {
-    # Task Definition は GitHub Actions のデプロイで更新するため、Terraform では追跡しない
-    ignore_changes = [task_definition]
+    ignore_changes = [task_definition, desired_count]
   }
 }
