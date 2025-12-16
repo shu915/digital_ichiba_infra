@@ -23,7 +23,7 @@ resource "aws_ecs_service" "digital_ichiba_service" {
   }
 
   network_configuration {
-    assign_public_ip = true
+    assign_public_ip = false
     security_groups  = [var.app_security_group_id]
     subnets          = var.public_subnet_ids
   }
