@@ -4,19 +4,22 @@ resource "aws_iam_policy" "gha_policy" {
     "Version" : "2012-10-17",
     "Statement" : [
       {
-        "Sid" : "EcrPush",
-        "Effect" : "Allow",
-        "Action" : [
-          "ecr:GetAuthorizationToken",
+        "Sid": "EcrAuth",
+        "Effect": "Allow",
+        "Action": "ecr:GetAuthorizationToken",
+        "Resource": "*"
+      },
+      {
+        "Sid": "EcrPush",
+        "Effect": "Allow",
+        "Action": [
           "ecr:BatchCheckLayerAvailability",
           "ecr:InitiateLayerUpload",
           "ecr:UploadLayerPart",
           "ecr:CompleteLayerUpload",
           "ecr:PutImage"
         ],
-        "Resource" : [
-          "arn:aws:ecr:ap-northeast-1:575357958164:repository/digital-ichiba-ecr"
-        ]
+        "Resource": "arn:aws:ecr:ap-northeast-1:575357958164:repository/digital-ichiba-ecr"
       },
       {
         "Sid" : "EcsDeploy",
@@ -39,19 +42,6 @@ resource "aws_iam_policy" "gha_policy" {
         "Resource" : [
           "arn:aws:iam::575357958164:role/DigitalIchibaEcsTaskRole",
           "arn:aws:iam::575357958164:role/DigitalIchibaEcsTaskExecRole"
-        ]
-      },
-      {
-        "Sid" : "CloudWatchLogs",
-        "Effect" : "Allow",
-        "Action" : [
-          "logs:CreateLogGroup",
-          "logs:CreateLogStream",
-          "logs:PutLogEvents",
-          "logs:DescribeLogStreams"
-        ],
-        "Resource" : [
-          "arn:aws:logs:ap-northeast-1:575357958164:log-group:/ecs/digital-ichiba*:log-stream:*"
         ]
       }
     ]
