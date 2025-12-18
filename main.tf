@@ -21,3 +21,17 @@ module "alb" {
 module "iam" {
   source = "./iam"
 }
+
+module "ecs" {
+  source                = "./ecs"
+  public_subnet_ids     = [module.network.public_subnet_1a_id, module.network.public_subnet_1c_id]
+  app_security_group_id = module.network.app_security_group_id
+  target_group_arn      = module.alb.target_group_arn
+}
+
+module "rds" {
+  source               = "./rds"
+  private_subnet_1a_id = module.network.private_subnet_1a_id
+  private_subnet_1c_id = module.network.private_subnet_1c_id
+  db_security_group_id = module.network.db_security_group_id
+}

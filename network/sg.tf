@@ -37,9 +37,9 @@ resource "aws_security_group" "app_sg" {
   }
 
   ingress {
-    from_port   = 3000
-    to_port     = 3000
-    protocol    = "tcp"
+    from_port       = 3000
+    to_port         = 3000
+    protocol        = "tcp"
     security_groups = [aws_security_group.alb_sg.id]
   }
 
@@ -60,9 +60,9 @@ resource "aws_security_group" "db_sg" {
   }
 
   ingress {
-    from_port   = 5432
-    to_port     = 5432
-    protocol    = "tcp"
+    from_port       = 5432
+    to_port         = 5432
+    protocol        = "tcp"
     security_groups = [aws_security_group.app_sg.id]
   }
 
