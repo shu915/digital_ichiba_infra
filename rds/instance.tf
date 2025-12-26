@@ -10,10 +10,9 @@ resource "aws_db_instance" "main" {
 
   apply_immediately       = false
   copy_tags_to_snapshot   = true
-  deletion_protection     = true
+  deletion_protection     = false
   max_allocated_storage   = 1000
-  skip_final_snapshot     = false
-  final_snapshot_identifier = "digital-ichiba-db-final-snapshot"
+  skip_final_snapshot     = true
 
   tags = {
     devops-guru-default = "digital-ichiba-db"

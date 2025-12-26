@@ -12,7 +12,7 @@ SNSと直結して5分でオンラインショップを開設できるECプラ�
 
 ## 構成図
 
-![AWSアーキテクチャ](docs/digital-ichiba-aws-architecture.webp)
+![AWSアーキテクチャ](docs/digital-ichiba-infra.webp)
 
 ## バージョン情報
 このリポジトリのバージョン情報です。  
@@ -44,5 +44,6 @@ terraform apply
 
 ### 変数
 - `terraform.tfvars` に環境に応じた値を設定します。
+
 
 
